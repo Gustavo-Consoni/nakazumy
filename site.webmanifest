@@ -1,0 +1,12 @@
+{
+  "name": "Nakazumy Sushi",
+  "short_name": "Nakazumy",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#0b0a09",
+  "theme_color": "#0b0a09",
+  "icons": [
+    { "src": "/img/apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "/img/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

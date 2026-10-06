@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página não encontrada | Nakazumy Sushi</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#0b0a09">
+
+  <!--
+    O GitHub Pages mostra este arquivo para qualquer endereço que não existe.
+    Por isso todos os caminhos aqui começam com "/" (absolutos a partir da raiz do domínio).
+
+    Endereços do site antigo são levados para o lugar equivalente no site novo,
+    para não perder visitas vindas do Google, de redes sociais ou de favoritos.
+  -->
+  <script>
+    (function () {
+      var redirects = {
+        '/cardapio': '/#cardapio',
+        '/rodizio': '/#rodizio',
+        '/sobre': '/#sobre',
+        '/contato': '/#contato',
+        '/img/nakazumy-cardapio.pdf': '/assets/nakazumy-cardapio.pdf',
+        '/img/nakazumy-rodizio.pdf': '/assets/nakazumy-rodizio.pdf'
+      };
+      var path = location.pathname.toLowerCase().replace(/\/+$/, '').replace(/\.html$/, '');
+      var target = redirects[path];
+      if (target) {
+        document.documentElement.style.visibility = 'hidden';
+        location.replace(target);
+      }
+    })();
+  </script>
+
+  <link rel="icon" href="/img/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32.png">
+  <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300&family=Manrope:wght@400;600&family=Shippori+Mincho:wght@400&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-ink: #0b0a09;
+      --color-cream: #f2ebdf;
+      --color-muted: #a39b8e;
+      --color-gold: #c8a96a;
+      --color-gold-light: #e2cc98;
+
+      --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+      --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+      --font-jp: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+    }
+
+    @layer base {
+      body { @apply bg-ink text-cream font-sans antialiased; }
+      ::selection { @apply bg-gold text-ink; }
+    }
+
+    @utility perf {
+      background-image: radial-gradient(circle, color-mix(in oklab, var(--color-gold) 38%, transparent) 1.1px, transparent 1.6px);
+      background-size: 18px 18px;
+    }
+    @utility fade-mask {
+      mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%);
+    }
+  </style>
+</head>
+
+<body class="relative isolate flex min-h-svh flex-col overflow-hidden">
+  <div class="perf fade-mask pointer-events-none absolute inset-0 -z-10 opacity-50"></div>
+  <div class="pointer-events-none absolute left-1/2 top-1/2 -z-10 size-[560px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gold/10 blur-[140px]"></div>
+
+  <header class="mx-auto w-full max-w-7xl px-5 py-6 sm:px-8">
+    <a href="/" class="inline-block">
+      <img src="/img/logo.webp" alt="Nakazumy Sushi" width="184" height="100" class="h-12 w-auto">
+    </a>
+  </header>
+
+  <main class="mx-auto flex w-full max-w-3xl flex-1 flex-col items-center justify-center px-5 pb-24 text-center sm:px-8">
+    <!-- 迷子 (maigo): "perdido" -->
+    <span aria-hidden="true" lang="ja" class="font-jp text-[7rem] leading-none text-gold/15 sm:text-[9rem]">迷子</span>
+
+    <p class="mt-6 flex items-center gap-4 text-[11px] font-semibold uppercase tracking-[.32em] text-gold">
+      <span class="h-px w-10 bg-gold/60"></span>Erro 404<span class="h-px w-10 bg-gold/60"></span>
+    </p>
+    <h1 class="mt-6 font-display text-5xl font-light leading-[1.05] sm:text-7xl">
+      Esta página<br><em class="italic text-gold">saiu do cardápio.</em>
+    </h1>
+    <p class="mt-8 max-w-lg leading-relaxed text-muted">
+      O endereço que você tentou acessar não existe ou mudou de lugar.
+      Que tal voltar ao início ou dar uma olhada no que estamos servindo?
+    </p>
+
+    <div class="mt-10 flex flex-wrap justify-center gap-4">
+      <a href="/" class="inline-flex items-center gap-3 rounded-full bg-gold px-7 py-4 text-[12px] font-semibold uppercase tracking-[.2em] text-ink transition hover:bg-gold-light">
+        Voltar ao início
+      </a>
+      <a href="/#cardapio" class="inline-flex items-center gap-3 rounded-full border border-cream/20 px-7 py-4 text-[12px] font-semibold uppercase tracking-[.2em] transition hover:border-gold hover:text-gold">
+        Ver cardápio
+      </a>
+    </div>
+
+    <p class="mt-14 text-sm text-muted">
+      Precisa de ajuda? Ligue <a href="tel:+551333491008" class="text-cream underline decoration-gold/50 underline-offset-4 hover:text-gold">(13) 3349-1008</a>
+    </p>
+  </main>
+</body>
+</html>

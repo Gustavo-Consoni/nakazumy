@@ -1,0 +1,2030 @@
+<!doctype html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nakazumy Sushi | Restaurante japonês e rodízio em Santos</title>
+  <meta name="description" content="Restaurante japonês no Gonzaga, em Santos. Rodízio de sushis, sashimis e pratos quentes, além de cardápio à la carte. Almoço e jantar todos os dias.">
+  <link rel="canonical" href="https://www.nakazumysushi.com.br/">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0b0a09">
+
+  <!-- Compartilhamento (WhatsApp, Facebook, Instagram, LinkedIn…) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Nakazumy Sushi">
+  <meta property="og:url" content="https://www.nakazumysushi.com.br/">
+  <meta property="og:title" content="Nakazumy Sushi | Restaurante japonês e rodízio em Santos">
+  <meta property="og:description" content="Rodízio de sushis, sashimis e pratos quentes, além de cardápio à la carte. Almoço e jantar todos os dias, no Gonzaga.">
+  <meta property="og:image" content="https://www.nakazumysushi.com.br/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Nakazumy Sushi — restaurante japonês em Santos">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Ícones -->
+  <link rel="icon" href="img/favicon.ico" sizes="48x48">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <!-- A foto principal começa a baixar antes do CSS/JS -->
+  <link rel="preload" as="image" href="img/ambiente/fachada-noite.webp" fetchpriority="high">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;1,300;1,400&family=Manrope:wght@400;500;600&family=Shippori+Mincho:wght@400&display=swap" rel="stylesheet">
+
+  <script>document.documentElement.classList.add('js')</script>
+
+  <!-- Tailwind CSS v4 (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">
+    @theme {
+      --color-ink: #0b0a09;
+      --color-ink-2: #121110;
+      --color-ink-3: #1a1816;
+      --color-cream: #f2ebdf;
+      --color-muted: #a39b8e;
+      --color-gold: #c8a96a;
+      --color-gold-light: #e2cc98;
+      --color-wood: #8c4a2c;
+
+      --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+      --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+      --font-jp: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+
+      --animate-marquee: marquee 45s linear infinite;
+      --animate-fade-up: fade-up .6s cubic-bezier(.2,.7,.2,1) both;
+
+      @keyframes marquee { to { transform: translateX(-50%); } }
+      @keyframes fade-up { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+    }
+
+    @layer base {
+      body { @apply bg-ink text-cream font-sans antialiased; }
+      ::selection { @apply bg-gold text-ink; }
+      /* O Tailwind v4 deixa os botões com cursor padrão; volta a mãozinha */
+      button:not(:disabled), [role="button"]:not(:disabled) { cursor: pointer; }
+    }
+
+    /* Padrão de pontos — inspirado no painel perfurado da fachada */
+    @utility perf {
+      background-image: radial-gradient(circle, color-mix(in oklab, var(--color-gold) 38%, transparent) 1.1px, transparent 1.6px);
+      background-size: 18px 18px;
+    }
+    @utility fade-mask {
+      mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%);
+    }
+    @utility no-scrollbar {
+      scrollbar-width: none;
+      &::-webkit-scrollbar { display: none; }
+    }
+
+    [x-cloak] { display: none !important; }
+
+    /* Textura sutil de grão sobre a página */
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: 100; pointer-events: none; opacity: .05;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* Revelar ao rolar */
+    .js .reveal { opacity: 0; transform: translateY(28px); transition: opacity 1s cubic-bezier(.2,.7,.2,1), transform 1s cubic-bezier(.2,.7,.2,1); }
+    .js .reveal.in { opacity: 1; transform: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .js .reveal { opacity: 1; transform: none; transition: none; }
+      .animate-marquee, .animate-fade-up { animation: none; }
+    }
+  </style>
+
+  <!-- Alpine.js (CDN) — nosso script primeiro, depois o plugin, depois o core -->
+  <script src="js/main.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/intersect@3.x.x/dist/cdn.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <!-- Dados estruturados: ajudam o Google a mostrar endereço, horário e telefone nos resultados e no Maps -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "@id": "https://www.nakazumysushi.com.br/#restaurante",
+    "name": "Nakazumy Sushi",
+    "description": "Restaurante japonês em Santos com rodízio de sushis, sashimis e pratos quentes, além de cardápio à la carte.",
+    "url": "https://www.nakazumysushi.com.br/",
+    "logo": "https://www.nakazumysushi.com.br/img/icon-512.png",
+    "image": [
+      "https://www.nakazumysushi.com.br/img/og-image.jpg",
+      "https://www.nakazumysushi.com.br/img/ambiente/fachada-noite.webp",
+      "https://www.nakazumysushi.com.br/img/ambiente/salao.webp",
+      "https://www.nakazumysushi.com.br/img/pratos/barco-sashimi.webp"
+    ],
+    "servesCuisine": ["Japonesa", "Sushi"],
+    "hasMenu": "https://www.nakazumysushi.com.br/#cardapio",
+    "telephone": "+55-13-3349-1008",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av. Dr. Bernardino de Campos, 548",
+      "addressLocality": "Santos",
+      "addressRegion": "SP",
+      "postalCode": "11065-000",
+      "addressCountry": "BR"
+    },
+    "hasMap": "https://www.google.com/maps/search/?api=1&query=Av.+Dr.+Bernardino+de+Campos,+548,+Santos+-+SP",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "12:00", "closes": "15:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "19:00", "closes": "23:00" }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/nakazumysushi/",
+      "https://www.facebook.com/Nakazumy-Sushi-649094469047388"
+    ]
+  }
+  </script>
+</head>
+
+<body x-data="site"
+      @scroll.window.passive="onScroll()"
+      @keydown.window.escape="lightbox.open ? closeLightbox() : (mobileOpen = false)"
+      @keydown.window.arrow-right="lightbox.open && step(1)"
+      @keydown.window.arrow-left="lightbox.open && step(-1)">
+
+  <a href="#conteudo" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded focus:bg-gold focus:px-4 focus:py-2 focus:text-ink">Pular para o conteúdo</a>
+
+  <!-- =====================================================================
+       HEADER
+       ===================================================================== -->
+  <header class="fixed inset-x-0 top-0 z-50 border-b py-3 transition-colors duration-500"
+          :class="scrolled || mobileOpen ? 'bg-ink/85 backdrop-blur-xl border-white/5' : 'border-transparent'">
+    <div class="mx-auto flex max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
+      <a href="#inicio" class="shrink-0" @click="mobileOpen = false">
+        <img src="img/logo.webp" alt="Nakazumy Sushi" width="184" height="100" class="h-12 w-auto">
+      </a>
+
+      <nav class="hidden items-center gap-9 text-[12px] font-medium uppercase tracking-[.22em] lg:flex" aria-label="Principal">
+        <a href="#sobre" class="group relative py-2 transition-colors duration-300 hover:text-gold"
+           :class="activeSection === 'sobre' ? 'text-gold' : 'text-cream/80'">
+          A casa
+          <span class="absolute inset-x-0 -bottom-0.5 h-px origin-left bg-gold transition-transform duration-500"
+                :class="activeSection === 'sobre' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'"></span>
+        </a>
+        <a href="#rodizio" class="group relative py-2 transition-colors duration-300 hover:text-gold"
+           :class="activeSection === 'rodizio' ? 'text-gold' : 'text-cream/80'">
+          Rodízio
+          <span class="absolute inset-x-0 -bottom-0.5 h-px origin-left bg-gold transition-transform duration-500"
+                :class="activeSection === 'rodizio' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'"></span>
+        </a>
+        <a href="#cardapio" class="group relative py-2 transition-colors duration-300 hover:text-gold"
+           :class="activeSection === 'cardapio' ? 'text-gold' : 'text-cream/80'">
+          Cardápio
+          <span class="absolute inset-x-0 -bottom-0.5 h-px origin-left bg-gold transition-transform duration-500"
+                :class="activeSection === 'cardapio' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'"></span>
+        </a>
+        <a href="#ambiente" class="group relative py-2 transition-colors duration-300 hover:text-gold"
+           :class="activeSection === 'ambiente' ? 'text-gold' : 'text-cream/80'">
+          Ambiente
+          <span class="absolute inset-x-0 -bottom-0.5 h-px origin-left bg-gold transition-transform duration-500"
+                :class="activeSection === 'ambiente' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'"></span>
+        </a>
+        <a href="#contato" class="group relative py-2 transition-colors duration-300 hover:text-gold"
+           :class="activeSection === 'contato' ? 'text-gold' : 'text-cream/80'">
+          Contato
+          <span class="absolute inset-x-0 -bottom-0.5 h-px origin-left bg-gold transition-transform duration-500"
+                :class="activeSection === 'contato' ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'"></span>
+        </a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <div class="hidden items-center gap-2 rounded-full border border-white/10 px-3.5 py-1.5 text-xs text-muted xl:flex" x-cloak>
+          <span class="relative flex size-2">
+            <span class="absolute inline-flex size-full rounded-full opacity-60" :class="status.open ? 'animate-ping bg-emerald-400' : 'bg-transparent'"></span>
+            <span class="relative inline-flex size-2 rounded-full" :class="status.open ? 'bg-emerald-400' : 'bg-wood'"></span>
+          </span>
+          <span><span class="text-cream" x-text="status.label"></span> · <span x-text="status.detail"></span></span>
+        </div>
+        <a href="tel:+551333491008" class="hidden items-center gap-2 rounded-full bg-gold px-5 py-2.5 text-[12px] font-semibold uppercase tracking-[.18em] text-ink transition duration-300 hover:bg-gold-light sm:inline-flex">
+          <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.28 6.72 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.37c0-.52-.35-.97-.85-1.09l-4.42-1.1c-.44-.11-.9.05-1.17.41l-.97 1.29a1.13 1.13 0 0 1-1.21.38 12.04 12.04 0 0 1-7.14-7.14 1.13 1.13 0 0 1 .38-1.21l1.29-.97c.36-.27.52-.73.41-1.17l-1.1-4.42a1.13 1.13 0 0 0-1.09-.85H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+          Reservar
+        </a>
+        <button type="button" class="relative grid size-11 place-items-center rounded-full border border-white/10 lg:hidden"
+                @click="mobileOpen = !mobileOpen" :aria-expanded="mobileOpen" aria-controls="menu-mobile" aria-label="Abrir menu">
+          <span class="absolute h-px w-5 bg-cream transition duration-300" :class="mobileOpen ? 'rotate-45' : '-translate-y-1.5'"></span>
+          <span class="absolute h-px w-5 bg-cream transition duration-300" :class="mobileOpen ? 'opacity-0' : ''"></span>
+          <span class="absolute h-px w-5 bg-cream transition duration-300" :class="mobileOpen ? '-rotate-45' : 'translate-y-1.5'"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu mobile -->
+  <div id="menu-mobile" x-cloak x-show="mobileOpen"
+       x-transition:enter="transition duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+       x-transition:leave="transition duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+       class="fixed inset-0 z-40 flex flex-col bg-ink px-6 pb-10 pt-28 lg:hidden">
+    <div class="perf fade-mask pointer-events-none absolute inset-0 opacity-40"></div>
+    <nav class="relative flex flex-col gap-1" aria-label="Menu mobile">
+      <a href="#sobre" @click="mobileOpen = false"
+         class="flex items-baseline gap-4 border-b border-white/5 py-4 font-display text-4xl font-light">
+        <span class="font-sans text-xs text-gold">01</span> A casa
+      </a>
+      <a href="#rodizio" @click="mobileOpen = false"
+         class="flex items-baseline gap-4 border-b border-white/5 py-4 font-display text-4xl font-light">
+        <span class="font-sans text-xs text-gold">02</span> Rodízio
+      </a>
+      <a href="#cardapio" @click="mobileOpen = false"
+         class="flex items-baseline gap-4 border-b border-white/5 py-4 font-display text-4xl font-light">
+        <span class="font-sans text-xs text-gold">03</span> Cardápio
+      </a>
+      <a href="#ambiente" @click="mobileOpen = false"
+         class="flex items-baseline gap-4 border-b border-white/5 py-4 font-display text-4xl font-light">
+        <span class="font-sans text-xs text-gold">04</span> Ambiente
+      </a>
+      <a href="#contato" @click="mobileOpen = false"
+         class="flex items-baseline gap-4 border-b border-white/5 py-4 font-display text-4xl font-light">
+        <span class="font-sans text-xs text-gold">05</span> Contato
+      </a>
+    </nav>
+    <div class="relative mt-auto space-y-4 text-sm text-muted">
+      <p class="flex items-center gap-2">
+        <span class="size-2 rounded-full" :class="status.open ? 'bg-emerald-400' : 'bg-wood'"></span>
+        <span class="text-cream" x-text="status.label"></span> · <span x-text="status.detail"></span>
+      </p>
+      <a href="tel:+551333491008" class="flex w-full items-center justify-center gap-2 rounded-full bg-gold py-4 text-sm font-semibold uppercase tracking-[.18em] text-ink">Ligar (13) 3349-1008</a>
+    </div>
+  </div>
+
+  <main id="conteudo">
+
+    <!-- =====================================================================
+         HERO
+         ===================================================================== -->
+    <section id="inicio" class="relative isolate flex min-h-[100svh] items-center overflow-hidden pb-20 pt-32 lg:pt-36">
+      <div class="perf fade-mask pointer-events-none absolute -right-40 top-0 -z-10 h-[120%] w-[80%] opacity-50"></div>
+      <div class="pointer-events-none absolute -left-40 top-1/3 -z-10 size-[520px] rounded-full bg-gold/10 blur-[140px]"></div>
+
+      <div class="mx-auto grid w-full max-w-7xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-12 lg:gap-10">
+        <div class="lg:col-span-7">
+          <p class="animate-fade-up flex items-center gap-4 text-[11px] font-medium uppercase tracking-[.32em] text-gold">
+            <span class="h-px w-10 bg-gold"></span> Culinária japonesa · Santos
+          </p>
+          <h1 class="animate-fade-up mt-7 font-display text-[clamp(2.25rem,12.5vw,3.2rem)] font-light leading-[.95] tracking-tight [animation-delay:.1s] sm:text-[clamp(3.2rem,8vw,7rem)] lg:text-[clamp(3.2rem,7.5vw,6rem)]">
+            <span class="whitespace-nowrap">Tradição japonesa,</span><br>
+            <em class="font-light italic text-gold">servida com arte.</em>
+          </h1>
+          <p class="animate-fade-up mt-8 max-w-xl text-base leading-relaxed text-muted sm:text-lg [animation-delay:.2s]">
+            Em um espaço amplo e de design sofisticado no Gonzaga, o Nakazumy reúne o melhor da culinária japonesa:
+            rodízio completo, pratos à la carte e um atendimento que transforma cada visita em ocasião especial.
+          </p>
+          <div class="animate-fade-up mt-10 flex flex-wrap gap-4 [animation-delay:.3s]">
+            <a href="#cardapio" class="group inline-flex items-center gap-3 rounded-full bg-gold px-7 py-4 text-[12px] font-semibold uppercase tracking-[.2em] text-ink transition duration-300 hover:bg-gold-light">
+              Ver cardápio
+              <svg class="size-4 transition duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-6-6 6 6-6 6"/></svg>
+            </a>
+            <a href="#rodizio" class="inline-flex items-center gap-3 rounded-full border border-cream/20 px-7 py-4 text-[12px] font-semibold uppercase tracking-[.2em] transition duration-300 hover:border-gold hover:text-gold">
+              Conheça o rodízio
+            </a>
+          </div>
+
+          <dl class="animate-fade-up mt-14 grid max-w-xl grid-cols-2 gap-8 border-t border-white/10 pt-8 text-sm [animation-delay:.4s]">
+            <div>
+              <dt class="text-[11px] uppercase tracking-[.24em] text-muted">Todos os dias</dt>
+              <dd class="mt-2 text-cream">12h às 15h · 19h às 23h</dd>
+            </div>
+            <div>
+              <dt class="text-[11px] uppercase tracking-[.24em] text-muted">Endereço</dt>
+              <dd class="mt-2 text-cream">Av. Dr. Bernardino de Campos, 548</dd>
+            </div>
+          </dl>
+        </div>
+
+        <!-- Composição de imagens -->
+        <div class="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
+          <span aria-hidden="true" class="pointer-events-none absolute -right-2 -top-10 z-10 font-jp text-[7rem] leading-none text-gold/15 [writing-mode:vertical-rl] sm:-right-8 lg:text-[9rem]">寿司</span>
+          <div class="animate-fade-up relative ml-auto aspect-[3/4] w-[86%] overflow-hidden rounded-t-full border border-gold/30 p-2 [animation-delay:.25s]">
+            <img src="img/ambiente/fachada-noite.webp" width="558" height="730" alt="Fachada do Nakazumy iluminada à noite" class="size-full rounded-t-full object-cover" fetchpriority="high">
+          </div>
+          <div class="animate-fade-up absolute -bottom-6 left-0 aspect-square w-[46%] overflow-hidden rounded-full border-[6px] border-ink shadow-2xl shadow-black/60 ring-1 ring-gold/40 [animation-delay:.45s]">
+            <img src="img/pratos/entradas-especiais.webp" width="500" height="500" alt="Seleção de entradas especiais" class="size-full object-cover">
+          </div>
+          <div class="animate-fade-up absolute bottom-16 right-0 rounded-2xl border border-white/10 bg-ink/80 px-5 py-4 backdrop-blur-md [animation-delay:.6s] sm:-right-4">
+            <p class="font-display text-3xl italic text-gold">À vontade</p>
+            <p class="mt-1 text-[11px] uppercase tracking-[.2em] text-muted">Rodízio · almoço e jantar</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Faixa animada -->
+    <div class="relative overflow-hidden border-y border-white/5 bg-ink-2 py-6" aria-hidden="true">
+      <div class="flex w-max animate-marquee">
+        <div class="flex shrink-0 items-center">
+          <span class="flex items-center gap-4 px-8 font-display text-3xl font-light italic text-cream/80 md:text-4xl">Sushi <span class="font-jp text-lg not-italic text-gold/70" lang="ja">寿司</span><span class="ml-8 size-1.5 rounded-full bg-gold/50"></span></span>
+          <span class="flex items-center gap-4 px-8 font-display text-3xl font-light italic text-cream/80 md:text-4xl">Sashimi <span class="font-jp text-lg not-italic text-gold/70" lang="ja">刺身</span><span class="ml-8 size-1.5 rounded-full bg-gold/50"></span></span>
+          <span class="flex items-center gap-4 px-8 font-display text-3xl font-light italic text-cream/80 md:text-4xl">Temaki <span class="font-jp text-lg not-italic text-gold/70" lang="ja">手巻き</span><span class="ml-8 size-1.5 rounded-full bg-gold/50"></span></span>
+          <span class="flex items-center gap-4 px-8 font-display text-3xl font-light italic text-cream/80 md:text-4xl">Teppanyaki <span class="font-jp text-lg not-italic text-gold/70" lang="ja">鉄板焼</span><span class="ml-8 size-1.5 rounded-full bg-gold/50"></span></span>
+          <span class="flex items-center gap-4 px-8 font-display text-3xl font-light italic text-cream/80 md:text-4xl">Rodízio <span class="font-jp text-lg not-italic text-gold/70" lang="ja">食べ放題</span><span class="ml-8 size-1.5 rounded-full bg-gold/50"></span></span>
+          <span class="flex items-center gap-4 px-8 font-display text-3xl font-light italic text-cream/80 md:text-4xl">Yakissoba <span class="font-jp text-lg not-italic text-gold/70" lang="ja">焼きそば</span><span class="ml-8 size-1.5 rounded-full bg-gold/50"></span></span>
+          <span class="flex items-center gap-4 px-8 font-display text-3xl font-light italic text-cream/80 md:text-4xl">Sakê <span class="font-jp text-lg not-italic text-gold/70" lang="ja">日本酒</span><span class="ml-8 size-1.5 rounded-full bg-gold/50"></span></span>
+        </div>
+        <div class="flex shrink-0 items-center">
+          <span class="flex items-center gap-4 px-8 font-display text-3xl font-light italic text-cream/80 md:text-4xl">Sushi <span class="font-jp text-lg not-italic text-gold/70" lang="ja">寿司</span><span class="ml-8 size-1.5 rounded-full bg-gold/50"></span></span>
+          <span class="flex items-center gap-4 px-8 font-display text-3xl font-light italic text-cream/80 md:text-4xl">Sashimi <span class="font-jp text-lg not-italic text-gold/70" lang="ja">刺身</span><span class="ml-8 size-1.5 rounded-full bg-gold/50"></span></span>
+          <span class="flex items-center gap-4 px-8 font-display text-3xl font-light italic text-cream/80 md:text-4xl">Temaki <span class="font-jp text-lg not-italic text-gold/70" lang="ja">手巻き</span><span class="ml-8 size-1.5 rounded-full bg-gold/50"></span></span>
+          <span class="flex items-center gap-4 px-8 font-display text-3xl font-light italic text-cream/80 md:text-4xl">Teppanyaki <span class="font-jp text-lg not-italic text-gold/70" lang="ja">鉄板焼</span><span class="ml-8 size-1.5 rounded-full bg-gold/50"></span></span>
+          <span class="flex items-center gap-4 px-8 font-display text-3xl font-light italic text-cream/80 md:text-4xl">Rodízio <span class="font-jp text-lg not-italic text-gold/70" lang="ja">食べ放題</span><span class="ml-8 size-1.5 rounded-full bg-gold/50"></span></span>
+          <span class="flex items-center gap-4 px-8 font-display text-3xl font-light italic text-cream/80 md:text-4xl">Yakissoba <span class="font-jp text-lg not-italic text-gold/70" lang="ja">焼きそば</span><span class="ml-8 size-1.5 rounded-full bg-gold/50"></span></span>
+          <span class="flex items-center gap-4 px-8 font-display text-3xl font-light italic text-cream/80 md:text-4xl">Sakê <span class="font-jp text-lg not-italic text-gold/70" lang="ja">日本酒</span><span class="ml-8 size-1.5 rounded-full bg-gold/50"></span></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================================
+         SOBRE
+         ===================================================================== -->
+    <section id="sobre" class="relative scroll-mt-16 py-28 lg:py-40">
+      <div class="mx-auto grid max-w-7xl items-center gap-16 px-5 sm:px-8 lg:grid-cols-2 lg:gap-24">
+        <div class="reveal relative" x-intersect.once="$el.classList.add('in')">
+          <div class="aspect-[4/5] overflow-hidden rounded-[2rem] sm:aspect-[5/4] lg:aspect-[4/5]">
+            <img src="img/ambiente/salao.webp" width="1024" height="768" alt="Salão do Nakazumy com iluminação indireta e painéis de madeira" loading="lazy" class="size-full object-cover transition duration-[2s] hover:scale-105">
+          </div>
+          <div class="absolute -bottom-10 -right-4 hidden aspect-[3/4] w-[38%] overflow-hidden rounded-2xl border-[6px] border-ink shadow-2xl shadow-black/50 sm:block lg:-right-10">
+            <img src="img/ambiente/fachada-letreiro.webp" width="768" height="1024" alt="Letreiro na fachada com jardim vertical" loading="lazy" class="size-full object-cover">
+          </div>
+          <div class="perf absolute -left-6 -top-6 -z-10 size-40 opacity-70"></div>
+        </div>
+
+        <div class="reveal" x-intersect.once="$el.classList.add('in')">
+          <p class="flex items-center gap-4 text-[11px] font-medium uppercase tracking-[.32em] text-gold"><span>01</span><span class="h-px w-10 bg-gold/60"></span>A casa</p>
+          <h2 class="mt-6 font-display text-5xl font-light leading-[1.05] sm:text-6xl">
+            Um refúgio japonês<br><em class="italic text-gold">no coração de Santos.</em>
+          </h2>
+          <div class="mt-8 space-y-5 leading-relaxed text-muted">
+            <p>Com espaço amplo e design sofisticado, o Nakazumy Sushi busca oferecer aos seus clientes o melhor da culinária japonesa na região de Santos.</p>
+            <p>Da fachada com jardim vertical ao salão em madeira e luz indireta, cada detalhe foi pensado para que a experiência comece antes do primeiro prato. Venha conhecer nosso ambiente e se surpreender com nossos pratos e nosso atendimento especial.</p>
+          </div>
+
+          <ul class="mt-12 grid gap-px overflow-hidden rounded-2xl border border-white/10 bg-white/10 sm:grid-cols-3">
+            <li class="bg-ink p-6">
+              <span class="font-jp text-2xl text-gold">食べ放題</span>
+              <p class="mt-3 font-medium">Rodízio completo</p>
+              <p class="mt-1 text-sm text-muted">Sushis, sashimis, temakis e pratos quentes.</p>
+            </li>
+            <li class="bg-ink p-6">
+              <span class="font-jp text-2xl text-gold">一品</span>
+              <p class="mt-3 font-medium">À la carte</p>
+              <p class="mt-1 text-sm text-muted">Combinados, teppans, yakissobas e especiais.</p>
+            </li>
+            <li class="bg-ink p-6">
+              <span class="font-jp text-2xl text-gold">毎日</span>
+              <p class="mt-3 font-medium">Todos os dias</p>
+              <p class="mt-1 text-sm text-muted">Almoço e jantar, de domingo a domingo.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         RODÍZIO
+         ===================================================================== -->
+    <section id="rodizio" class="relative scroll-mt-16 overflow-hidden bg-ink-2 py-28 lg:py-40">
+      <div class="perf fade-mask pointer-events-none absolute inset-x-0 top-0 h-[600px] opacity-40"></div>
+
+      <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <div class="reveal lg:col-span-7" x-intersect.once="$el.classList.add('in')">
+            <p class="flex items-center gap-4 text-[11px] font-medium uppercase tracking-[.32em] text-gold"><span>02</span><span class="h-px w-10 bg-gold/60"></span>Rodízio</p>
+            <h2 class="mt-6 font-display text-5xl font-light leading-[1.05] sm:text-6xl lg:text-7xl">
+              Tudo à vontade,<br><em class="italic text-gold">do ceviche ao hot banana.</em>
+            </h2>
+          </div>
+          <div class="reveal lg:col-span-5" x-intersect.once="$el.classList.add('in')">
+            <p class="leading-relaxed text-muted">
+              Rodízio de sushis, sashimis e pratos quentes no almoço e no jantar, todos os dias.
+              Uma sequência generosa para provar a cozinha do Nakazumy de ponta a ponta.
+            </p>
+            <a href="assets/nakazumy-rodizio.pdf" target="_blank" rel="noopener" class="group mt-6 inline-flex items-center gap-3 text-[12px] font-semibold uppercase tracking-[.2em] text-gold">
+              <span class="grid size-10 place-items-center rounded-full border border-gold/40 transition duration-300 group-hover:bg-gold group-hover:text-ink">
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>
+              </span>
+              Rodízio completo em PDF
+            </a>
+          </div>
+        </div>
+
+        <figure class="reveal relative mt-16 overflow-hidden rounded-[2rem]" x-intersect.once="$el.classList.add('in')">
+          <img src="img/pratos/mesa-rodizio.webp" width="960" height="550" alt="Mesa com barco de sushi, temakis, harumakis, camarão empanado e outros pratos do rodízio" loading="lazy" class="aspect-[16/10] w-full scale-[1.12] object-cover sm:aspect-[21/9]">
+          <div class="absolute inset-0 bg-gradient-to-r from-ink-2/70 via-transparent to-ink-2/30"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/10 to-transparent"></div>
+          <figcaption class="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-4 p-6 sm:p-10">
+            <p class="font-display text-3xl font-light italic sm:text-4xl">Almoço e jantar · todos os dias</p>
+            <p class="text-[11px] uppercase tracking-[.24em] text-gold">Consumo no restaurante</p>
+          </figcaption>
+        </figure>
+
+        <!-- Sequência do rodízio -->
+        <ol class="mt-16 grid gap-px overflow-hidden rounded-[2rem] border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-3">
+          <li class="reveal group relative bg-ink-2 p-8 transition-colors duration-500 hover:bg-ink-3 lg:p-10"
+              x-intersect.once="$el.classList.add('in')" style="transition-delay:0ms">
+            <div class="flex items-start justify-between">
+              <span class="font-display text-lg italic text-gold">01</span>
+              <span class="font-jp text-4xl text-white/10 transition-colors duration-500 group-hover:text-gold/40" lang="ja" aria-hidden="true">前菜</span>
+            </div>
+            <h3 class="mt-6 font-display text-3xl font-light">Entradas frias</h3>
+            <ul class="mt-5 space-y-2.5 text-sm text-muted">
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Ceviche</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Sunomono</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Carpaccio de salmão com geleia de pimenta</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Carpaccio de salmão com ponzu e maracujá</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Carpaccio de tilápia com molho de azeitonas</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Carpaccio de tilápia com molho do chef</li>
+            </ul>
+          </li>
+          <li class="reveal group relative bg-ink-2 p-8 transition-colors duration-500 hover:bg-ink-3 lg:p-10"
+              x-intersect.once="$el.classList.add('in')" style="transition-delay:90ms">
+            <div class="flex items-start justify-between">
+              <span class="font-display text-lg italic text-gold">02</span>
+              <span class="font-jp text-4xl text-white/10 transition-colors duration-500 group-hover:text-gold/40" lang="ja" aria-hidden="true">握り</span>
+            </div>
+            <h3 class="mt-6 font-display text-3xl font-light">Sushis &amp; makimonos</h3>
+            <ul class="mt-5 space-y-2.5 text-sm text-muted">
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Niguiri de atum, salmão e peixe branco</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Baterá</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Jhou de salmão, com camarão e flambado com couve</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Jhou com geleia</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Tekkamaki, kanimaki e salmonmaki</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Uramaki de salmão, skin e Filadélfia</li>
+            </ul>
+          </li>
+          <li class="reveal group relative bg-ink-2 p-8 transition-colors duration-500 hover:bg-ink-3 lg:p-10"
+              x-intersect.once="$el.classList.add('in')" style="transition-delay:180ms">
+            <div class="flex items-start justify-between">
+              <span class="font-display text-lg italic text-gold">03</span>
+              <span class="font-jp text-4xl text-white/10 transition-colors duration-500 group-hover:text-gold/40" lang="ja" aria-hidden="true">手巻き</span>
+            </div>
+            <h3 class="mt-6 font-display text-3xl font-light">Temakis</h3>
+            <ul class="mt-5 space-y-2.5 text-sm text-muted">
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Salmão</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Peixe branco</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Atum</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Filadélfia</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Skin</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Shimeji</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Califórnia</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Hot roll</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Kani</li>
+            </ul>
+          </li>
+          <li class="reveal group relative bg-ink-2 p-8 transition-colors duration-500 hover:bg-ink-3 lg:p-10"
+              x-intersect.once="$el.classList.add('in')" style="transition-delay:0ms">
+            <div class="flex items-start justify-between">
+              <span class="font-display text-lg italic text-gold">04</span>
+              <span class="font-jp text-4xl text-white/10 transition-colors duration-500 group-hover:text-gold/40" lang="ja" aria-hidden="true">刺身</span>
+            </div>
+            <h3 class="mt-6 font-display text-3xl font-light">Sashimis</h3>
+            <ul class="mt-5 space-y-2.5 text-sm text-muted">
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Salmão</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Atum</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Peixe prego</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Tilápia</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Polvo</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Kani</li>
+            </ul>
+          </li>
+          <li class="reveal group relative bg-ink-2 p-8 transition-colors duration-500 hover:bg-ink-3 lg:p-10"
+              x-intersect.once="$el.classList.add('in')" style="transition-delay:90ms">
+            <div class="flex items-start justify-between">
+              <span class="font-display text-lg italic text-gold">05</span>
+              <span class="font-jp text-4xl text-white/10 transition-colors duration-500 group-hover:text-gold/40" lang="ja" aria-hidden="true">温菜</span>
+            </div>
+            <h3 class="mt-6 font-display text-3xl font-light">Pratos quentes</h3>
+            <ul class="mt-5 space-y-2.5 text-sm text-muted">
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Teppan de salmão</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Teppan de tilápia grelhada</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Guioza e harumaki</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Lula à dorê e lula na chapa</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Camarão empanado e camarão na chapa</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Croquete, robata e casquinha de siri</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Shimeji, yakissoba e pastelzinho de salmão</li>
+            </ul>
+          </li>
+          <li class="reveal group relative bg-ink-2 p-8 transition-colors duration-500 hover:bg-ink-3 lg:p-10"
+              x-intersect.once="$el.classList.add('in')" style="transition-delay:180ms">
+            <div class="flex items-start justify-between">
+              <span class="font-display text-lg italic text-gold">06</span>
+              <span class="font-jp text-4xl text-white/10 transition-colors duration-500 group-hover:text-gold/40" lang="ja" aria-hidden="true">甘味</span>
+            </div>
+            <h3 class="mt-6 font-display text-3xl font-light">Sushis doces</h3>
+            <ul class="mt-5 space-y-2.5 text-sm text-muted">
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Hot banana com leite condensado</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Hot banana com chocolate</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Hot banana com doce de leite</li>
+              <li class="flex gap-3"><span class="mt-2 size-1 shrink-0 rounded-full bg-gold/70"></span>Hot banana com goiabada</li>
+            </ul>
+          </li>
+        </ol>
+
+        <div class="mt-6 grid gap-6 md:grid-cols-2">
+          <div class="reveal flex items-center gap-6 rounded-[2rem] border border-gold/30 bg-gradient-to-br from-gold/15 to-transparent p-8" x-intersect.once="$el.classList.add('in')">
+            <span class="grid size-16 shrink-0 place-items-center rounded-full bg-gold font-jp text-2xl text-ink">贈</span>
+            <div>
+              <p class="text-[11px] uppercase tracking-[.24em] text-gold">Cortesia</p>
+              <p class="mt-2 font-display text-2xl font-light leading-snug">Um sorvete de creme, chocolate ou papaia a cada rodízio consumido.</p>
+            </div>
+          </div>
+          <div class="reveal flex items-center gap-6 rounded-[2rem] border border-white/10 p-8" x-intersect.once="$el.classList.add('in')">
+            <span class="grid size-16 shrink-0 place-items-center rounded-full border border-gold/40 font-jp text-2xl text-gold">本日</span>
+            <div>
+              <p class="text-[11px] uppercase tracking-[.24em] text-gold">Pratos especiais</p>
+              <p class="mt-2 font-display text-2xl font-light leading-snug">Pergunte à nossa equipe pela opção especial do dia.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CARDÁPIO
+         ===================================================================== -->
+    <section id="cardapio" class="relative scroll-mt-16 py-28 lg:py-40">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <div class="reveal lg:col-span-7" x-intersect.once="$el.classList.add('in')">
+            <p class="flex items-center gap-4 text-[11px] font-medium uppercase tracking-[.32em] text-gold"><span>03</span><span class="h-px w-10 bg-gold/60"></span>Cardápio</p>
+            <h2 class="mt-6 font-display text-5xl font-light leading-[1.05] sm:text-6xl lg:text-7xl">
+              À la carte<em class="italic text-gold">.</em>
+            </h2>
+            <p class="mt-6 max-w-lg leading-relaxed text-muted">Dos combinados da casa ao teppanyaki na chapa, escolha com calma. Use a busca para encontrar um prato específico.</p>
+          </div>
+          <div class="reveal lg:col-span-5" x-intersect.once="$el.classList.add('in')">
+            <label class="relative block">
+              <span class="sr-only">Buscar no cardápio</span>
+              <svg class="pointer-events-none absolute left-5 top-1/2 size-5 -translate-y-1/2 text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path stroke-linecap="round" d="m20 20-3.5-3.5"/></svg>
+              <input type="search" x-model.debounce.150ms="query" placeholder="Buscar: salmão, hot roll, yakissoba…"
+                     class="w-full appearance-none rounded-full border border-white/10 bg-ink-2 py-4 pl-14 pr-12 [&::-webkit-search-cancel-button]:hidden text-sm text-cream placeholder:text-muted/70 outline-none transition duration-300 focus:border-gold/60 focus:ring-4 focus:ring-gold/10">
+              <button type="button" x-show="query" x-cloak @click="query = ''" class="absolute right-4 top-1/2 grid size-7 -translate-y-1/2 place-items-center rounded-full text-muted hover:text-cream" aria-label="Limpar busca">
+                <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
+              </button>
+            </label>
+          </div>
+        </div>
+
+        <!-- Abas -->
+        <div class="relative mt-14" x-show="!searching">
+          <div x-ref="tabs" role="tablist" aria-label="Categorias do cardápio" class="no-scrollbar -mx-5 flex gap-2 overflow-x-auto px-5 pb-2 sm:mx-0 sm:flex-wrap sm:px-0">
+            <button type="button" role="tab" id="tab-entradas" aria-controls="cat-entradas" data-tab="entradas"
+                    :aria-selected="tab === 'entradas'" @click="selectTab('entradas')"
+                    class="flex shrink-0 items-center gap-2.5 rounded-full border px-5 py-2.5 text-sm transition duration-300"
+                    :class="tab === 'entradas' ? 'border-gold bg-gold text-ink' : 'border-white/10 text-cream/80 hover:border-gold/50 hover:text-cream'">
+              <span class="font-jp text-xs" lang="ja" :class="tab === 'entradas' ? 'text-ink/70' : 'text-gold/80'">前菜</span>
+              Entradas
+            </button>
+            <button type="button" role="tab" id="tab-combinados" aria-controls="cat-combinados" data-tab="combinados"
+                    :aria-selected="tab === 'combinados'" @click="selectTab('combinados')"
+                    class="flex shrink-0 items-center gap-2.5 rounded-full border px-5 py-2.5 text-sm transition duration-300"
+                    :class="tab === 'combinados' ? 'border-gold bg-gold text-ink' : 'border-white/10 text-cream/80 hover:border-gold/50 hover:text-cream'">
+              <span class="font-jp text-xs" lang="ja" :class="tab === 'combinados' ? 'text-ink/70' : 'text-gold/80'">盛り合わせ</span>
+              Combinados
+            </button>
+            <button type="button" role="tab" id="tab-especiais" aria-controls="cat-especiais" data-tab="especiais"
+                    :aria-selected="tab === 'especiais'" @click="selectTab('especiais')"
+                    class="flex shrink-0 items-center gap-2.5 rounded-full border px-5 py-2.5 text-sm transition duration-300"
+                    :class="tab === 'especiais' ? 'border-gold bg-gold text-ink' : 'border-white/10 text-cream/80 hover:border-gold/50 hover:text-cream'">
+              <span class="font-jp text-xs" lang="ja" :class="tab === 'especiais' ? 'text-ink/70' : 'text-gold/80'">特選</span>
+              Pratos Especiais
+            </button>
+            <button type="button" role="tab" id="tab-sushis" aria-controls="cat-sushis" data-tab="sushis"
+                    :aria-selected="tab === 'sushis'" @click="selectTab('sushis')"
+                    class="flex shrink-0 items-center gap-2.5 rounded-full border px-5 py-2.5 text-sm transition duration-300"
+                    :class="tab === 'sushis' ? 'border-gold bg-gold text-ink' : 'border-white/10 text-cream/80 hover:border-gold/50 hover:text-cream'">
+              <span class="font-jp text-xs" lang="ja" :class="tab === 'sushis' ? 'text-ink/70' : 'text-gold/80'">寿司</span>
+              Sushis &amp; Makis
+            </button>
+            <button type="button" role="tab" id="tab-temakis" aria-controls="cat-temakis" data-tab="temakis"
+                    :aria-selected="tab === 'temakis'" @click="selectTab('temakis')"
+                    class="flex shrink-0 items-center gap-2.5 rounded-full border px-5 py-2.5 text-sm transition duration-300"
+                    :class="tab === 'temakis' ? 'border-gold bg-gold text-ink' : 'border-white/10 text-cream/80 hover:border-gold/50 hover:text-cream'">
+              <span class="font-jp text-xs" lang="ja" :class="tab === 'temakis' ? 'text-ink/70' : 'text-gold/80'">手巻き</span>
+              Temakis
+            </button>
+            <button type="button" role="tab" id="tab-sashimis" aria-controls="cat-sashimis" data-tab="sashimis"
+                    :aria-selected="tab === 'sashimis'" @click="selectTab('sashimis')"
+                    class="flex shrink-0 items-center gap-2.5 rounded-full border px-5 py-2.5 text-sm transition duration-300"
+                    :class="tab === 'sashimis' ? 'border-gold bg-gold text-ink' : 'border-white/10 text-cream/80 hover:border-gold/50 hover:text-cream'">
+              <span class="font-jp text-xs" lang="ja" :class="tab === 'sashimis' ? 'text-ink/70' : 'text-gold/80'">刺身</span>
+              Sashimis
+            </button>
+            <button type="button" role="tab" id="tab-quentes" aria-controls="cat-quentes" data-tab="quentes"
+                    :aria-selected="tab === 'quentes'" @click="selectTab('quentes')"
+                    class="flex shrink-0 items-center gap-2.5 rounded-full border px-5 py-2.5 text-sm transition duration-300"
+                    :class="tab === 'quentes' ? 'border-gold bg-gold text-ink' : 'border-white/10 text-cream/80 hover:border-gold/50 hover:text-cream'">
+              <span class="font-jp text-xs" lang="ja" :class="tab === 'quentes' ? 'text-ink/70' : 'text-gold/80'">温菜</span>
+              Pratos Quentes
+            </button>
+            <button type="button" role="tab" id="tab-teppan" aria-controls="cat-teppan" data-tab="teppan"
+                    :aria-selected="tab === 'teppan'" @click="selectTab('teppan')"
+                    class="flex shrink-0 items-center gap-2.5 rounded-full border px-5 py-2.5 text-sm transition duration-300"
+                    :class="tab === 'teppan' ? 'border-gold bg-gold text-ink' : 'border-white/10 text-cream/80 hover:border-gold/50 hover:text-cream'">
+              <span class="font-jp text-xs" lang="ja" :class="tab === 'teppan' ? 'text-ink/70' : 'text-gold/80'">鉄板焼</span>
+              Teppan &amp; Yakissoba
+            </button>
+            <button type="button" role="tab" id="tab-sobremesas" aria-controls="cat-sobremesas" data-tab="sobremesas"
+                    :aria-selected="tab === 'sobremesas'" @click="selectTab('sobremesas')"
+                    class="flex shrink-0 items-center gap-2.5 rounded-full border px-5 py-2.5 text-sm transition duration-300"
+                    :class="tab === 'sobremesas' ? 'border-gold bg-gold text-ink' : 'border-white/10 text-cream/80 hover:border-gold/50 hover:text-cream'">
+              <span class="font-jp text-xs" lang="ja" :class="tab === 'sobremesas' ? 'text-ink/70' : 'text-gold/80'">甘味</span>
+              Sobremesas
+            </button>
+            <button type="button" role="tab" id="tab-bebidas" aria-controls="cat-bebidas" data-tab="bebidas"
+                    :aria-selected="tab === 'bebidas'" @click="selectTab('bebidas')"
+                    class="flex shrink-0 items-center gap-2.5 rounded-full border px-5 py-2.5 text-sm transition duration-300"
+                    :class="tab === 'bebidas' ? 'border-gold bg-gold text-ink' : 'border-white/10 text-cream/80 hover:border-gold/50 hover:text-cream'">
+              <span class="font-jp text-xs" lang="ja" :class="tab === 'bebidas' ? 'text-ink/70' : 'text-gold/80'">飲み物</span>
+              Bebidas
+            </button>
+          </div>
+        </div>
+
+        <!-- Estado da busca -->
+        <p x-show="searching" x-cloak class="mt-14 text-sm text-muted" aria-live="polite">
+          <span x-show="anyMatch">Resultados para “<span class="text-cream" x-text="query.trim()"></span>”</span>
+          <span x-show="!anyMatch">Nenhum prato encontrado para “<span class="text-cream" x-text="query.trim()"></span>”. Tente outro termo ou fale com nossa equipe.</span>
+        </p>
+
+        <!-- Categorias (todo o conteúdo fica no HTML para os buscadores; o Alpine só mostra/oculta) -->
+        <div class="mt-12 space-y-20">
+          <!-- Entradas -->
+          <article id="cat-entradas" role="tabpanel" aria-labelledby="tab-entradas"
+                   x-show="searching ? hasMatch($el) : tab === 'entradas'"
+                   x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-y-0"
+                   class="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <aside class="lg:col-span-4" x-show="!searching">
+              <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-ink-2 lg:sticky lg:top-28">
+                <div class="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/5]">
+                  <img src="img/pratos/shimeji.webp" width="500" height="500" alt="Entradas do Nakazumy" class="absolute inset-0 size-full object-cover" loading="lazy">
+                  <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
+                  <span class="absolute right-6 top-6 font-jp text-5xl text-cream/90 drop-shadow-lg [writing-mode:vertical-rl]" lang="ja" aria-hidden="true">前菜</span>
+                  <div class="absolute inset-x-0 bottom-0 p-7">
+                    <p class="text-[11px] uppercase tracking-[.24em] text-gold">10 opções</p>
+                    <h3 class="mt-2 font-display text-4xl font-light">Entradas</h3>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            <div class="space-y-14 lg:col-span-8">
+              <button type="button" x-show="searching" x-cloak @click="selectTab('entradas')" class="group flex w-full items-center gap-4 text-left">
+                <span class="font-jp text-lg text-gold/80" lang="ja">前菜</span>
+                <span class="font-display text-3xl font-light">Entradas</span>
+                <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                <span class="text-[11px] uppercase tracking-[.2em] text-muted transition duration-300 group-hover:text-gold">Ver categoria</span>
+              </button>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Entradas</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="guioza pasteis recheados com legumes e carne bovina entradas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Guioza</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Pastéis recheados com legumes e carne bovina</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">8 un.</span>
+                </li>
+                <li data-s="harumaki de queijo rolinho primavera entradas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Harumaki de Queijo</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Rolinho primavera</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">8 un.</span>
+                </li>
+                <li data-s="shimeji cogumelos na manteiga entradas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Shimeji</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Cogumelos na manteiga</p>
+                  </div>
+                </li>
+                <li data-s="shimeji com lula cogumelos com lula entradas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Shimeji com Lula</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Cogumelos com lula</p>
+                  </div>
+                </li>
+                <li data-s="shimeji com camarao cogumelos com camarao entradas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Shimeji com Camarão</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Cogumelos com camarão</p>
+                  </div>
+                </li>
+                <li data-s="lula a milanesa entradas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Lula à Milanesa</p>
+                  </div>
+                </li>
+                <li data-s="croquete de salmao entradas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Croquete de Salmão</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">10 un.</span>
+                </li>
+                </ul>
+              </div>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Acompanhamentos</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="missoshiro sopa a base de pasta de soja com tofu acompanhamentos entradas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Missoshiro</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Sopa à base de pasta de soja com tofu</p>
+                  </div>
+                </li>
+                <li data-s="gohan arroz branco japones acompanhamentos entradas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Gohan</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Arroz branco japonês</p>
+                  </div>
+                </li>
+                <li data-s="yakimeshi acompanhamentos entradas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Yakimeshi</p>
+                  </div>
+                </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <!-- Combinados -->
+          <article id="cat-combinados" role="tabpanel" aria-labelledby="tab-combinados" x-cloak
+                   x-show="searching ? hasMatch($el) : tab === 'combinados'"
+                   x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-y-0"
+                   class="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <aside class="lg:col-span-4" x-show="!searching">
+              <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-ink-2 lg:sticky lg:top-28">
+                <div class="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/5]">
+                  <img src="img/pratos/combinado.webp" width="500" height="500" alt="Combinados do Nakazumy" class="absolute inset-0 size-full object-cover" loading="lazy">
+                  <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
+                  <span class="absolute right-6 top-6 font-jp text-5xl text-cream/90 drop-shadow-lg [writing-mode:vertical-rl]" lang="ja" aria-hidden="true">盛り合わせ</span>
+                  <div class="absolute inset-x-0 bottom-0 p-7">
+                    <p class="text-[11px] uppercase tracking-[.24em] text-gold">5 opções</p>
+                    <h3 class="mt-2 font-display text-4xl font-light">Combinados</h3>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            <div class="space-y-14 lg:col-span-8">
+              <button type="button" x-show="searching" x-cloak @click="selectTab('combinados')" class="group flex w-full items-center gap-4 text-left">
+                <span class="font-jp text-lg text-gold/80" lang="ja">盛り合わせ</span>
+                <span class="font-display text-3xl font-light">Combinados</span>
+                <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                <span class="text-[11px] uppercase tracking-[.2em] text-muted transition duration-300 group-hover:text-gold">Ver categoria</span>
+              </button>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Combinados da casa</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12">
+                <li data-s="nakazumy 1 pessoa 6 sashimis, 4 sushis, 2 jhous, 4 hot rolls e 4 bateras combinados da casa combinados" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Nakazumy 1 Pessoa</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">6 sashimis, 4 sushis, 2 jhous, 4 hot rolls e 4 baterás</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">20 un.</span>
+                </li>
+                <li data-s="nakazumy 2 pessoas 12 sashimis, 4 sushis, 4 uramakis de salmao, 2 bateras, 4 jhous, 4 hot rolls, 2 niguiris skin e 4 uramakis skin combinados da casa combinados" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Nakazumy 2 Pessoas</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">12 sashimis, 4 sushis, 4 uramakis de salmão, 2 baterás, 4 jhous, 4 hot rolls, 2 niguiris skin e 4 uramakis skin</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">36 un.</span>
+                </li>
+                <li data-s="nakazumy 3 pessoas 16 sashimis, 9 sushis, 3 uramakis de salmao, 3 uramakis skin, 3 jhous, 3 bateras, 5 jhous de batata e 4 hot rolls combinados da casa combinados" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Nakazumy 3 Pessoas</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">16 sashimis, 9 sushis, 3 uramakis de salmão, 3 uramakis skin, 3 jhous, 3 baterás, 5 jhous de batata e 4 hot rolls</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">45 un.</span>
+                </li>
+                <li data-s="nakazumy especial 20 sashimis, 12 sushis, 4 jhous de ovas, 4 jhous de salmao, 4 bateras, 4 uramakis de salmao e 4 uramakis skin combinados da casa combinados" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Nakazumy Especial</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">20 sashimis, 12 sushis, 4 jhous de ovas, 4 jhous de salmão, 4 baterás, 4 uramakis de salmão e 4 uramakis skin</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">52 un.</span>
+                </li>
+                <li data-s="nakazumy super especial 25 sashimis, 4 sushis de salmao, 4 de peixe branco, 4 de atum, 4 de camarao, 3 de polvo, 3 de ovas, 6 hot rolls, 6 jhous, 4 bateras, 4 jhous de batata e 3 niguiris skin combinados da casa combinados" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Nakazumy Super Especial</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">25 sashimis, 4 sushis de salmão, 4 de peixe branco, 4 de atum, 4 de camarão, 3 de polvo, 3 de ovas, 6 hot rolls, 6 jhous, 4 baterás, 4 jhous de batata e 3 niguiris skin</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">70 un.</span>
+                </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <!-- Pratos Especiais -->
+          <article id="cat-especiais" role="tabpanel" aria-labelledby="tab-especiais" x-cloak
+                   x-show="searching ? hasMatch($el) : tab === 'especiais'"
+                   x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-y-0"
+                   class="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <aside class="lg:col-span-4" x-show="!searching">
+              <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-ink-2 lg:sticky lg:top-28">
+                <div class="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/5]">
+                  <img src="img/pratos/entradas-especiais.webp" width="500" height="500" alt="Pratos Especiais do Nakazumy" class="absolute inset-0 size-full object-cover" loading="lazy">
+                  <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
+                  <span class="absolute right-6 top-6 font-jp text-5xl text-cream/90 drop-shadow-lg [writing-mode:vertical-rl]" lang="ja" aria-hidden="true">特選</span>
+                  <div class="absolute inset-x-0 bottom-0 p-7">
+                    <p class="text-[11px] uppercase tracking-[.24em] text-gold">10 opções</p>
+                    <h3 class="mt-2 font-display text-4xl font-light">Pratos Especiais</h3>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            <div class="space-y-14 lg:col-span-8">
+              <button type="button" x-show="searching" x-cloak @click="selectTab('especiais')" class="group flex w-full items-center gap-4 text-left">
+                <span class="font-jp text-lg text-gold/80" lang="ja">特選</span>
+                <span class="font-display text-3xl font-light">Pratos Especiais</span>
+                <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                <span class="text-[11px] uppercase tracking-[.2em] text-muted transition duration-300 group-hover:text-gold">Ver categoria</span>
+              </button>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Pratos especiais</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <p class="mt-3 text-sm italic text-muted">Molhos para os carpaccios: do chef, de azeitonas, ponzu, maracujá, geleia de pimenta e trufado.</p>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="carpaccio de salmao pratos especiais" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Carpaccio de Salmão</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">16 fatias</span>
+                </li>
+                <li data-s="carpaccio de tilapia pratos especiais" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Carpaccio de Tilápia</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">16 fatias</span>
+                </li>
+                <li data-s="carpaccio prego flambado pratos especiais" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Carpaccio Prego Flambado</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">16 fatias</span>
+                </li>
+                <li data-s="tarta de salmao pratos especiais" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Tarta de Salmão</p>
+                  </div>
+                </li>
+                <li data-s="pedra de sal pratos especiais" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Pedra de Sal</p>
+                  </div>
+                </li>
+                <li data-s="jhou de salmao com couve, batata, geleia ou ovas pratos especiais" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Jhou de Salmão</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Com couve, batata, geleia ou ovas</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">8 un.</span>
+                </li>
+                <li data-s="hot roll pratos especiais" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Hot Roll</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">30 un.</span>
+                </li>
+                <li data-s="hot roll especial pratos especiais" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Hot Roll Especial</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">8 un.</span>
+                </li>
+                <li data-s="ceviche pratos especiais" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Ceviche</p>
+                  </div>
+                </li>
+                <li data-s="batera de salmao pratos especiais" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Baterá de Salmão</p>
+                  </div>
+                </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <!-- Sushis & Makis -->
+          <article id="cat-sushis" role="tabpanel" aria-labelledby="tab-sushis" x-cloak
+                   x-show="searching ? hasMatch($el) : tab === 'sushis'"
+                   x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-y-0"
+                   class="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <aside class="lg:col-span-4" x-show="!searching">
+              <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-ink-2 lg:sticky lg:top-28">
+                <div class="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/5]">
+                  <img src="img/pratos/barco-sashimi.webp" width="1024" height="768" alt="Sushis &amp; Makis do Nakazumy" class="absolute inset-0 size-full object-cover" loading="lazy">
+                  <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
+                  <span class="absolute right-6 top-6 font-jp text-5xl text-cream/90 drop-shadow-lg [writing-mode:vertical-rl]" lang="ja" aria-hidden="true">寿司</span>
+                  <div class="absolute inset-x-0 bottom-0 p-7">
+                    <p class="text-[11px] uppercase tracking-[.24em] text-gold">19 opções</p>
+                    <h3 class="mt-2 font-display text-4xl font-light">Sushis &amp; Makis</h3>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            <div class="space-y-14 lg:col-span-8">
+              <button type="button" x-show="searching" x-cloak @click="selectTab('sushis')" class="group flex w-full items-center gap-4 text-left">
+                <span class="font-jp text-lg text-gold/80" lang="ja">寿司</span>
+                <span class="font-display text-3xl font-light">Sushis &amp; Makis</span>
+                <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                <span class="text-[11px] uppercase tracking-[.2em] text-muted transition duration-300 group-hover:text-gold">Ver categoria</span>
+              </button>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Sushis em dupla</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="kani kama sushis em dupla sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Kani Kama</p>
+                  </div>
+                </li>
+                <li data-s="salmao sushis em dupla sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Salmão</p>
+                  </div>
+                </li>
+                <li data-s="peixe branco sushis em dupla sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Peixe Branco</p>
+                  </div>
+                </li>
+                <li data-s="atum sushis em dupla sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Atum</p>
+                  </div>
+                </li>
+                <li data-s="jhou sushis em dupla sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Jhou</p>
+                  </div>
+                </li>
+                <li data-s="sushi skin sushis em dupla sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Sushi Skin</p>
+                  </div>
+                </li>
+                <li data-s="camarao sushis em dupla sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Camarão</p>
+                  </div>
+                </li>
+                <li data-s="polvo sushis em dupla sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Polvo</p>
+                  </div>
+                </li>
+                <li data-s="ovas sushis em dupla sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Ovas</p>
+                  </div>
+                </li>
+                </ul>
+              </div>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Makisushis</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12">
+                <li data-s="hot roll makisushis sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Hot Roll</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">8 un.</span>
+                </li>
+                <li data-s="uramaki filadelfia makisushis sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Uramaki Filadélfia</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">8 un.</span>
+                </li>
+                <li data-s="uramaki california makisushis sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Uramaki Califórnia</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">8 un.</span>
+                </li>
+                <li data-s="uramaki de salmao makisushis sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Uramaki de Salmão</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">8 un.</span>
+                </li>
+                <li data-s="uramaki skin makisushis sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Uramaki Skin</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">8 un.</span>
+                </li>
+                <li data-s="tekkamaki makisushis sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Tekkamaki</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">8 un.</span>
+                </li>
+                <li data-s="kappamaki makisushis sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Kappamaki</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">8 un.</span>
+                </li>
+                <li data-s="kanimaki makisushis sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Kanimaki</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">8 un.</span>
+                </li>
+                <li data-s="salmonmaki makisushis sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Salmonmaki</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">8 un.</span>
+                </li>
+                <li data-s="acelgamaki salmao grelhado com cebolinha e maionese, enrolado na acelga com uma pitada de pimenta makisushis sushis &amp; makis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Acelgamaki</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Salmão grelhado com cebolinha e maionese, enrolado na acelga com uma pitada de pimenta</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">8 un.</span>
+                </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <!-- Temakis -->
+          <article id="cat-temakis" role="tabpanel" aria-labelledby="tab-temakis" x-cloak
+                   x-show="searching ? hasMatch($el) : tab === 'temakis'"
+                   x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-y-0"
+                   class="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <aside class="lg:col-span-4" x-show="!searching">
+              <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-ink-2 lg:sticky lg:top-28">
+                <div class="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/5]">
+                  <img src="img/pratos/temakis.webp" width="500" height="500" alt="Temakis do Nakazumy" class="absolute inset-0 size-full object-cover" loading="lazy">
+                  <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
+                  <span class="absolute right-6 top-6 font-jp text-5xl text-cream/90 drop-shadow-lg [writing-mode:vertical-rl]" lang="ja" aria-hidden="true">手巻き</span>
+                  <div class="absolute inset-x-0 bottom-0 p-7">
+                    <p class="text-[11px] uppercase tracking-[.24em] text-gold">11 opções</p>
+                    <h3 class="mt-2 font-display text-4xl font-light">Temakis</h3>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            <div class="space-y-14 lg:col-span-8">
+              <button type="button" x-show="searching" x-cloak @click="selectTab('temakis')" class="group flex w-full items-center gap-4 text-left">
+                <span class="font-jp text-lg text-gold/80" lang="ja">手巻き</span>
+                <span class="font-display text-3xl font-light">Temakis</span>
+                <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                <span class="text-[11px] uppercase tracking-[.2em] text-muted transition duration-300 group-hover:text-gold">Ver categoria</span>
+              </button>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Temakis</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="salmao temakis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Salmão</p>
+                  </div>
+                </li>
+                <li data-s="salmao grelhado temakis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Salmão Grelhado</p>
+                  </div>
+                </li>
+                <li data-s="atum temakis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Atum</p>
+                  </div>
+                </li>
+                <li data-s="kani kama temakis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Kani Kama</p>
+                  </div>
+                </li>
+                <li data-s="california temakis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Califórnia</p>
+                  </div>
+                </li>
+                <li data-s="salmon skin temakis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Salmon Skin</p>
+                  </div>
+                </li>
+                <li data-s="shimeji temakis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Shimeji</p>
+                  </div>
+                </li>
+                <li data-s="peixe branco temakis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Peixe Branco</p>
+                  </div>
+                </li>
+                <li data-s="polvo temakis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Polvo</p>
+                  </div>
+                </li>
+                <li data-s="hot roll temakis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Hot Roll</p>
+                  </div>
+                </li>
+                <li data-s="camarao temakis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Camarão</p>
+                  </div>
+                </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <!-- Sashimis -->
+          <article id="cat-sashimis" role="tabpanel" aria-labelledby="tab-sashimis" x-cloak
+                   x-show="searching ? hasMatch($el) : tab === 'sashimis'"
+                   x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-y-0"
+                   class="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <aside class="lg:col-span-4" x-show="!searching">
+              <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-ink-2 lg:sticky lg:top-28">
+                <div class="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/5]">
+                  <img src="img/pratos/barco-sashimi.webp" width="1024" height="768" alt="Sashimis do Nakazumy" class="absolute inset-0 size-full object-cover" loading="lazy">
+                  <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
+                  <span class="absolute right-6 top-6 font-jp text-5xl text-cream/90 drop-shadow-lg [writing-mode:vertical-rl]" lang="ja" aria-hidden="true">刺身</span>
+                  <div class="absolute inset-x-0 bottom-0 p-7">
+                    <p class="text-[11px] uppercase tracking-[.24em] text-gold">6 opções</p>
+                    <h3 class="mt-2 font-display text-4xl font-light">Sashimis</h3>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            <div class="space-y-14 lg:col-span-8">
+              <button type="button" x-show="searching" x-cloak @click="selectTab('sashimis')" class="group flex w-full items-center gap-4 text-left">
+                <span class="font-jp text-lg text-gold/80" lang="ja">刺身</span>
+                <span class="font-display text-3xl font-light">Sashimis</span>
+                <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                <span class="text-[11px] uppercase tracking-[.2em] text-muted transition duration-300 group-hover:text-gold">Ver categoria</span>
+              </button>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Sashimis</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="sashimi misto atum, salmao e peixe branco sashimis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Sashimi Misto</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Atum, salmão e peixe branco</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">24 un.</span>
+                </li>
+                <li data-s="sashimi de salmao sashimis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Sashimi de Salmão</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">16 un.</span>
+                </li>
+                <li data-s="sashimi de atum sashimis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Sashimi de Atum</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">16 un.</span>
+                </li>
+                <li data-s="sashimi especial atum, salmao, peixe branco, kani e polvo sashimis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Sashimi Especial</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Atum, salmão, peixe branco, kani e polvo</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">35 un.</span>
+                </li>
+                <li data-s="sashimi de peixe branco sashimis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Sashimi de Peixe Branco</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">16 un.</span>
+                </li>
+                <li data-s="sashimi de polvo sashimis" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Sashimi de Polvo</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">16 un.</span>
+                </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <!-- Pratos Quentes -->
+          <article id="cat-quentes" role="tabpanel" aria-labelledby="tab-quentes" x-cloak
+                   x-show="searching ? hasMatch($el) : tab === 'quentes'"
+                   x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-y-0"
+                   class="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <aside class="lg:col-span-4" x-show="!searching">
+              <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-ink-2 lg:sticky lg:top-28">
+                <div class="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/5]">
+                  <img src="img/pratos/harumaki.webp" width="768" height="1024" alt="Pratos Quentes do Nakazumy" class="absolute inset-0 size-full object-cover" loading="lazy">
+                  <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
+                  <span class="absolute right-6 top-6 font-jp text-5xl text-cream/90 drop-shadow-lg [writing-mode:vertical-rl]" lang="ja" aria-hidden="true">温菜</span>
+                  <div class="absolute inset-x-0 bottom-0 p-7">
+                    <p class="text-[11px] uppercase tracking-[.24em] text-gold">9 opções</p>
+                    <h3 class="mt-2 font-display text-4xl font-light">Pratos Quentes</h3>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            <div class="space-y-14 lg:col-span-8">
+              <button type="button" x-show="searching" x-cloak @click="selectTab('quentes')" class="group flex w-full items-center gap-4 text-left">
+                <span class="font-jp text-lg text-gold/80" lang="ja">温菜</span>
+                <span class="font-display text-3xl font-light">Pratos Quentes</span>
+                <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                <span class="text-[11px] uppercase tracking-[.2em] text-muted transition duration-300 group-hover:text-gold">Ver categoria</span>
+              </button>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Pratos quentes</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="gyukatsu pratos quentes" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Gyukatsu</p>
+                  </div>
+                </li>
+                <li data-s="chickenkatsu pratos quentes" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Chickenkatsu</p>
+                  </div>
+                </li>
+                <li data-s="shogayaki pratos quentes" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Shogayaki</p>
+                  </div>
+                </li>
+                <li data-s="salmao ao molho de maracuja pratos quentes" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Salmão ao Molho de Maracujá</p>
+                  </div>
+                </li>
+                <li data-s="robata pratos quentes" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Robata</p>
+                  </div>
+                </li>
+                <li data-s="batata frita pratos quentes" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Batata Frita</p>
+                  </div>
+                </li>
+                </ul>
+              </div>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Tempurá</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="tempura de legumes tempura pratos quentes" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Tempurá de Legumes</p>
+                  </div>
+                </li>
+                <li data-s="tempura de camarao tempura pratos quentes" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Tempurá de Camarão</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">12 un.</span>
+                </li>
+                <li data-s="tempura misto tempura pratos quentes" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Tempurá Misto</p>
+                  </div>
+                </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <!-- Teppan & Yakissoba -->
+          <article id="cat-teppan" role="tabpanel" aria-labelledby="tab-teppan" x-cloak
+                   x-show="searching ? hasMatch($el) : tab === 'teppan'"
+                   x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-y-0"
+                   class="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <aside class="lg:col-span-4" x-show="!searching">
+              <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-ink-2 lg:sticky lg:top-28">
+                <div class="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/5]">
+                  <img src="img/pratos/teppan.webp" width="500" height="500" alt="Teppan &amp; Yakissoba do Nakazumy" class="absolute inset-0 size-full object-cover" loading="lazy">
+                  <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
+                  <span class="absolute right-6 top-6 font-jp text-5xl text-cream/90 drop-shadow-lg [writing-mode:vertical-rl]" lang="ja" aria-hidden="true">鉄板焼</span>
+                  <div class="absolute inset-x-0 bottom-0 p-7">
+                    <p class="text-[11px] uppercase tracking-[.24em] text-gold">14 opções</p>
+                    <h3 class="mt-2 font-display text-4xl font-light">Teppan &amp; Yakissoba</h3>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            <div class="space-y-14 lg:col-span-8">
+              <button type="button" x-show="searching" x-cloak @click="selectTab('teppan')" class="group flex w-full items-center gap-4 text-left">
+                <span class="font-jp text-lg text-gold/80" lang="ja">鉄板焼</span>
+                <span class="font-display text-3xl font-light">Teppan &amp; Yakissoba</span>
+                <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                <span class="text-[11px] uppercase tracking-[.2em] text-muted transition duration-300 group-hover:text-gold">Ver categoria</span>
+              </button>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Teppanyaki</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="anchova teppanyaki teppan &amp; yakissoba" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Anchova</p>
+                  </div>
+                </li>
+                <li data-s="salmao teppanyaki teppan &amp; yakissoba" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Salmão</p>
+                  </div>
+                </li>
+                <li data-s="lula teppanyaki teppan &amp; yakissoba" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Lula</p>
+                  </div>
+                </li>
+                <li data-s="frutos do mar teppanyaki teppan &amp; yakissoba" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Frutos do Mar</p>
+                  </div>
+                </li>
+                <li data-s="camarao teppanyaki teppan &amp; yakissoba" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Camarão</p>
+                  </div>
+                </li>
+                <li data-s="file de frango teppanyaki teppan &amp; yakissoba" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Filé de Frango</p>
+                  </div>
+                </li>
+                <li data-s="contra file teppanyaki teppan &amp; yakissoba" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Contra Filé</p>
+                  </div>
+                </li>
+                <li data-s="file mignon teppanyaki teppan &amp; yakissoba" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Filé Mignon</p>
+                  </div>
+                </li>
+                </ul>
+              </div>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Yakissoba</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="yakissoba de carne macarrao, carne e legumes yakissoba teppan &amp; yakissoba" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Yakissoba de Carne</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Macarrão, carne e legumes</p>
+                  </div>
+                </li>
+                <li data-s="yakissoba de frango macarrao, frango e legumes yakissoba teppan &amp; yakissoba" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Yakissoba de Frango</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Macarrão, frango e legumes</p>
+                  </div>
+                </li>
+                <li data-s="yakissoba de camarao yakissoba teppan &amp; yakissoba" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Yakissoba de Camarão</p>
+                  </div>
+                </li>
+                <li data-s="yakissoba vegetariano macarrao, shimeji e legumes yakissoba teppan &amp; yakissoba" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Yakissoba Vegetariano</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Macarrão, shimeji e legumes</p>
+                  </div>
+                </li>
+                <li data-s="yakissoba misto macarrao, carne bovina, frango e legumes yakissoba teppan &amp; yakissoba" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Yakissoba Misto</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Macarrão, carne bovina, frango e legumes</p>
+                  </div>
+                </li>
+                <li data-s="yakissoba especial macarrao, frutos do mar, camarao e legumes yakissoba teppan &amp; yakissoba" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Yakissoba Especial</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Macarrão, frutos do mar, camarão e legumes</p>
+                  </div>
+                </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <!-- Sobremesas -->
+          <article id="cat-sobremesas" role="tabpanel" aria-labelledby="tab-sobremesas" x-cloak
+                   x-show="searching ? hasMatch($el) : tab === 'sobremesas'"
+                   x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-y-0"
+                   class="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <aside class="lg:col-span-4" x-show="!searching">
+              <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-ink-2 lg:sticky lg:top-28">
+                <div class="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/5]">
+                  <div class="perf fade-mask absolute inset-0 opacity-70"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
+                  <span class="absolute right-6 top-6 font-jp text-5xl text-cream/90 drop-shadow-lg [writing-mode:vertical-rl]" lang="ja" aria-hidden="true">甘味</span>
+                  <div class="absolute inset-x-0 bottom-0 p-7">
+                    <p class="text-[11px] uppercase tracking-[.24em] text-gold">7 opções</p>
+                    <h3 class="mt-2 font-display text-4xl font-light">Sobremesas</h3>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            <div class="space-y-14 lg:col-span-8">
+              <button type="button" x-show="searching" x-cloak @click="selectTab('sobremesas')" class="group flex w-full items-center gap-4 text-left">
+                <span class="font-jp text-lg text-gold/80" lang="ja">甘味</span>
+                <span class="font-display text-3xl font-light">Sobremesas</span>
+                <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                <span class="text-[11px] uppercase tracking-[.2em] text-muted transition duration-300 group-hover:text-gold">Ver categoria</span>
+              </button>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Sobremesas</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="petit gateau sobremesas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Petit Gâteau</p>
+                  </div>
+                </li>
+                <li data-s="gran gateau sobremesas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Gran Gâteau</p>
+                  </div>
+                </li>
+                <li data-s="taca de nutella sobremesas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Taça de Nutella</p>
+                  </div>
+                </li>
+                <li data-s="banana flambada sobremesas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Banana Flambada</p>
+                  </div>
+                </li>
+                <li data-s="tempura de sorvete sobremesas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Tempurá de Sorvete</p>
+                  </div>
+                </li>
+                <li data-s="creme de papaia sobremesas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Creme de Papaia</p>
+                  </div>
+                </li>
+                <li data-s="sorvete sobremesas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Sorvete</p>
+                  </div>
+                </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+          <!-- Bebidas -->
+          <article id="cat-bebidas" role="tabpanel" aria-labelledby="tab-bebidas" x-cloak
+                   x-show="searching ? hasMatch($el) : tab === 'bebidas'"
+                   x-transition:enter="transition duration-500 ease-out" x-transition:enter-start="opacity-0 translate-y-3" x-transition:enter-end="opacity-100 translate-y-0"
+                   class="grid gap-10 lg:grid-cols-12 lg:gap-16">
+            <aside class="lg:col-span-4" x-show="!searching">
+              <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-ink-2 lg:sticky lg:top-28">
+                <div class="relative aspect-[16/10] sm:aspect-[16/9] lg:aspect-[4/5]">
+                  <div class="perf fade-mask absolute inset-0 opacity-70"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-ink via-ink/30 to-transparent"></div>
+                  <span class="absolute right-6 top-6 font-jp text-5xl text-cream/90 drop-shadow-lg [writing-mode:vertical-rl]" lang="ja" aria-hidden="true">飲み物</span>
+                  <div class="absolute inset-x-0 bottom-0 p-7">
+                    <p class="text-[11px] uppercase tracking-[.24em] text-gold">30 opções</p>
+                    <h3 class="mt-2 font-display text-4xl font-light">Bebidas</h3>
+                  </div>
+                </div>
+              </div>
+            </aside>
+
+            <div class="space-y-14 lg:col-span-8">
+              <button type="button" x-show="searching" x-cloak @click="selectTab('bebidas')" class="group flex w-full items-center gap-4 text-left">
+                <span class="font-jp text-lg text-gold/80" lang="ja">飲み物</span>
+                <span class="font-display text-3xl font-light">Bebidas</span>
+                <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                <span class="text-[11px] uppercase tracking-[.2em] text-muted transition duration-300 group-hover:text-gold">Ver categoria</span>
+              </button>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Sem álcool</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="sucos especiais sem alcool bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Sucos Especiais</p>
+                  </div>
+                </li>
+                <li data-s="sucos sem alcool bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Sucos</p>
+                  </div>
+                </li>
+                <li data-s="sucos mistos sem alcool bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Sucos Mistos</p>
+                  </div>
+                </li>
+                <li data-s="limonada suica sem alcool bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Limonada Suíça</p>
+                  </div>
+                </li>
+                <li data-s="soda italiana sem alcool bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Soda Italiana</p>
+                  </div>
+                </li>
+                <li data-s="refrigerante sem alcool bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Refrigerante</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">lata</span>
+                </li>
+                <li data-s="tonica ou schweppes sem alcool bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Tônica ou Schweppes</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">lata</span>
+                </li>
+                <li data-s="h2o sem alcool bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">H2O</p>
+                  </div>
+                </li>
+                <li data-s="agua mineral sem alcool bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Água Mineral</p>
+                  </div>
+                </li>
+                <li data-s="agua mineral com gas sem alcool bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Água Mineral com Gás</p>
+                  </div>
+                </li>
+                <li data-s="cafe sem alcool bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Café</p>
+                  </div>
+                </li>
+                <li data-s="ban cha sem alcool bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Ban Chá</p>
+                  </div>
+                </li>
+                </ul>
+              </div>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Sakês</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="sake nacional sakes bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Sakê Nacional</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">dose</span>
+                </li>
+                <li data-s="sake nacional sakes bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Sakê Nacional</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">garrafa</span>
+                </li>
+                <li data-s="sake quente nacional sakes bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Sakê Quente Nacional</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">dose</span>
+                </li>
+                </ul>
+              </div>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Coquetéis</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <p class="mt-3 text-sm italic text-muted">Sabores: morango, abacaxi, maracujá e kiwi.</p>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="caipirinha 51 ou velho barreiro coqueteis bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Caipirinha</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">51 ou Velho Barreiro</p>
+                  </div>
+                </li>
+                <li data-s="caipirosca smirnoff coqueteis bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Caipirosca</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Smirnoff</p>
+                  </div>
+                </li>
+                <li data-s="saquerinha sake nacional coqueteis bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Saquerinha</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Sakê nacional</p>
+                  </div>
+                </li>
+                <li data-s="caipirosca importada absolut coqueteis bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Caipirosca Importada</p>
+                    <p class="mt-1 text-sm leading-relaxed text-muted">Absolut</p>
+                  </div>
+                </li>
+                </ul>
+              </div>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Cervejas</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="heineken cervejas bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Heineken</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">long neck</span>
+                </li>
+                <li data-s="stella artois cervejas bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Stella Artois</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">long neck</span>
+                </li>
+                <li data-s="budweiser cervejas bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Budweiser</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">long neck</span>
+                </li>
+                <li data-s="corona cervejas bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Corona</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">long neck</span>
+                </li>
+                <li data-s="therezopolis cervejas bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Therezópolis</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">garrafa</span>
+                </li>
+                <li data-s="original cervejas bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Original</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">garrafa</span>
+                </li>
+                <li data-s="heineken cervejas bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Heineken</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">garrafa</span>
+                </li>
+                </ul>
+              </div>
+              <div x-show="!searching || hasMatch($el)">
+                <div class="flex items-center gap-5">
+                  <h4 class="shrink-0 font-display text-2xl italic text-gold">Destilados</h4>
+                  <span class="h-px flex-1 bg-gradient-to-r from-gold/40 to-transparent"></span>
+                </div>
+                <ul class="mt-4 grid gap-x-12 md:grid-cols-2">
+                <li data-s="whisky 8 anos destilados bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Whisky 8 anos</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">dose ou garrafa</span>
+                </li>
+                <li data-s="whisky 12 anos destilados bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Whisky 12 anos</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">dose ou garrafa</span>
+                </li>
+                <li data-s="absolut destilados bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Absolut</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">dose</span>
+                </li>
+                <li data-s="smirnoff destilados bebidas" x-show="!searching || matches($el)" class="flex items-baseline justify-between gap-6 border-b border-white/5 py-4">
+                  <div>
+                    <p class="font-medium text-cream">Smirnoff</p>
+                  </div>
+                  <span class="shrink-0 text-[11px] uppercase tracking-[.16em] text-gold/90">dose</span>
+                </li>
+                </ul>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="mt-20 flex flex-col items-start justify-between gap-6 rounded-[2rem] border border-white/10 bg-ink-2 p-8 sm:flex-row sm:items-center lg:p-10">
+          <div>
+            <p class="font-display text-3xl font-light">Prefere o cardápio impresso?</p>
+            <p class="mt-2 text-sm text-muted">Baixe a versão completa com fotos. Consulte valores e disponibilidade com nossa equipe.</p>
+          </div>
+          <a href="assets/nakazumy-cardapio.pdf" target="_blank" rel="noopener" class="inline-flex shrink-0 items-center gap-3 rounded-full border border-gold/50 px-7 py-4 text-[12px] font-semibold uppercase tracking-[.2em] text-gold transition duration-300 hover:bg-gold hover:text-ink">
+            <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4v12m0 0-5-5m5 5 5-5M5 20h14"/></svg>
+            Cardápio em PDF
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         AMBIENTE
+         ===================================================================== -->
+    <section id="ambiente" class="relative scroll-mt-16 bg-ink-2 py-28 lg:py-40">
+      <div class="mx-auto max-w-7xl px-5 sm:px-8">
+        <div class="grid gap-10 lg:grid-cols-12 lg:items-end">
+          <div class="reveal lg:col-span-7" x-intersect.once="$el.classList.add('in')">
+            <p class="flex items-center gap-4 text-[11px] font-medium uppercase tracking-[.32em] text-gold"><span>04</span><span class="h-px w-10 bg-gold/60"></span>Ambiente</p>
+            <h2 class="mt-6 font-display text-5xl font-light leading-[1.05] sm:text-6xl lg:text-7xl">
+              Design que<br><em class="italic text-gold">abre o apetite.</em>
+            </h2>
+          </div>
+          <p class="reveal leading-relaxed text-muted lg:col-span-5" x-intersect.once="$el.classList.add('in')">
+            Jardim vertical, painéis perfurados, madeira e luz indireta. Um espaço amplo e acolhedor, pensado para almoços tranquilos, jantares a dois e grandes encontros em família.
+          </p>
+        </div>
+
+        <div data-gallery class="mt-16 grid auto-rows-[160px] grid-flow-dense grid-cols-2 gap-3 sm:auto-rows-[220px] md:grid-cols-4 lg:auto-rows-[250px]">
+          <button type="button" @click="openLightbox(0)" aria-label="Ampliar foto: Fachada do Nakazumy iluminada à noite, com jardim vertical e painel perfurado"
+                  class="reveal group relative overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold md:row-span-2"
+                  x-intersect.once="$el.classList.add('in')" style="transition-delay:0ms">
+            <img src="img/ambiente/fachada-noite.webp" width="558" height="730" alt="Fachada do Nakazumy iluminada à noite, com jardim vertical e painel perfurado" loading="lazy" class="size-full object-cover transition duration-[1.2s] ease-out group-hover:scale-110">
+            <span class="absolute inset-0 bg-ink/0 transition duration-500 group-hover:bg-ink/40"></span>
+            <span class="absolute bottom-4 right-4 grid size-10 translate-y-2 place-items-center rounded-full bg-gold text-ink opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </button>
+          <button type="button" @click="openLightbox(1)" aria-label="Ampliar foto: Salão interno com iluminação indireta, painéis de madeira e parede texturizada"
+                  class="reveal group relative overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold md:col-span-2"
+                  x-intersect.once="$el.classList.add('in')" style="transition-delay:70ms">
+            <img src="img/ambiente/salao.webp" width="1024" height="768" alt="Salão interno com iluminação indireta, painéis de madeira e parede texturizada" loading="lazy" class="size-full object-cover transition duration-[1.2s] ease-out group-hover:scale-110">
+            <span class="absolute inset-0 bg-ink/0 transition duration-500 group-hover:bg-ink/40"></span>
+            <span class="absolute bottom-4 right-4 grid size-10 translate-y-2 place-items-center rounded-full bg-gold text-ink opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </button>
+          <button type="button" @click="openLightbox(2)" aria-label="Ampliar foto: Barco de sashimis de salmão, atum e peixe branco"
+                  class="reveal group relative overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+                  x-intersect.once="$el.classList.add('in')" style="transition-delay:140ms">
+            <img src="img/pratos/barco-sashimi.webp" width="1024" height="768" alt="Barco de sashimis de salmão, atum e peixe branco" loading="lazy" class="size-full object-cover transition duration-[1.2s] ease-out group-hover:scale-110">
+            <span class="absolute inset-0 bg-ink/0 transition duration-500 group-hover:bg-ink/40"></span>
+            <span class="absolute bottom-4 right-4 grid size-10 translate-y-2 place-items-center rounded-full bg-gold text-ink opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </button>
+          <button type="button" @click="openLightbox(3)" aria-label="Ampliar foto: Harumakis crocantes com molho agridoce"
+                  class="reveal group relative overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+                  x-intersect.once="$el.classList.add('in')" style="transition-delay:210ms">
+            <img src="img/pratos/harumaki.webp" width="768" height="1024" alt="Harumakis crocantes com molho agridoce" loading="lazy" class="size-full object-cover transition duration-[1.2s] ease-out group-hover:scale-110">
+            <span class="absolute inset-0 bg-ink/0 transition duration-500 group-hover:bg-ink/40"></span>
+            <span class="absolute bottom-4 right-4 grid size-10 translate-y-2 place-items-center rounded-full bg-gold text-ink opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </button>
+          <button type="button" @click="openLightbox(4)" aria-label="Ampliar foto: Fachada do restaurante durante o dia"
+                  class="reveal group relative overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+                  x-intersect.once="$el.classList.add('in')" style="transition-delay:0ms">
+            <img src="img/ambiente/fachada-dia.webp" width="768" height="1024" alt="Fachada do restaurante durante o dia" loading="lazy" class="size-full object-cover transition duration-[1.2s] ease-out group-hover:scale-110">
+            <span class="absolute inset-0 bg-ink/0 transition duration-500 group-hover:bg-ink/40"></span>
+            <span class="absolute bottom-4 right-4 grid size-10 translate-y-2 place-items-center rounded-full bg-gold text-ink opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </button>
+          <button type="button" @click="openLightbox(5)" aria-label="Ampliar foto: Temaki de kani servido com laranja e pepino"
+                  class="reveal group relative overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold md:row-span-2"
+                  x-intersect.once="$el.classList.add('in')" style="transition-delay:70ms">
+            <img src="img/pratos/temaki-kani.webp" width="768" height="1024" alt="Temaki de kani servido com laranja e pepino" loading="lazy" class="size-full object-cover transition duration-[1.2s] ease-out group-hover:scale-110">
+            <span class="absolute inset-0 bg-ink/0 transition duration-500 group-hover:bg-ink/40"></span>
+            <span class="absolute bottom-4 right-4 grid size-10 translate-y-2 place-items-center rounded-full bg-gold text-ink opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </button>
+          <button type="button" @click="openLightbox(6)" aria-label="Ampliar foto: Letreiro Nakazumy na fachada com jardim vertical"
+                  class="reveal group relative overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold"
+                  x-intersect.once="$el.classList.add('in')" style="transition-delay:140ms">
+            <img src="img/ambiente/fachada-letreiro.webp" width="768" height="1024" alt="Letreiro Nakazumy na fachada com jardim vertical" loading="lazy" class="size-full object-cover transition duration-[1.2s] ease-out group-hover:scale-110">
+            <span class="absolute inset-0 bg-ink/0 transition duration-500 group-hover:bg-ink/40"></span>
+            <span class="absolute bottom-4 right-4 grid size-10 translate-y-2 place-items-center rounded-full bg-gold text-ink opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </button>
+          <button type="button" @click="openLightbox(7)" aria-label="Ampliar foto: Mesa posta com barco de sushi, temakis, harumakis e pratos quentes"
+                  class="reveal group relative overflow-hidden rounded-2xl focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-gold md:col-span-2"
+                  x-intersect.once="$el.classList.add('in')" style="transition-delay:210ms">
+            <img src="img/pratos/mesa-rodizio.webp" width="960" height="550" alt="Mesa posta com barco de sushi, temakis, harumakis e pratos quentes" loading="lazy" class="size-full object-cover transition duration-[1.2s] ease-out group-hover:scale-110">
+            <span class="absolute inset-0 bg-ink/0 transition duration-500 group-hover:bg-ink/40"></span>
+            <span class="absolute bottom-4 right-4 grid size-10 translate-y-2 place-items-center rounded-full bg-gold text-ink opacity-0 transition duration-500 group-hover:translate-y-0 group-hover:opacity-100">
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" d="M12 5v14M5 12h14"/></svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CONTATO
+         ===================================================================== -->
+    <section id="contato" class="relative scroll-mt-16 py-28 lg:py-40">
+      <div class="mx-auto grid max-w-7xl gap-16 px-5 sm:px-8 lg:grid-cols-12">
+        <div class="reveal lg:col-span-5" x-intersect.once="$el.classList.add('in')">
+          <p class="flex items-center gap-4 text-[11px] font-medium uppercase tracking-[.32em] text-gold"><span>05</span><span class="h-px w-10 bg-gold/60"></span>Contato</p>
+          <h2 class="mt-6 font-display text-5xl font-light leading-[1.05] sm:text-6xl">
+            Venha nos<br><em class="italic text-gold">visitar.</em>
+          </h2>
+
+          <dl class="mt-12 divide-y divide-white/10 border-y border-white/10">
+            <div class="grid grid-cols-[2.5rem_1fr] gap-4 py-6">
+              <svg class="mt-0.5 size-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+              <div>
+                <dt class="text-[11px] uppercase tracking-[.24em] text-muted">Endereço</dt>
+                <dd class="mt-2 text-lg">Av. Dr. Bernardino de Campos, 548<br><span class="text-muted">Gonzaga · Santos — SP</span></dd>
+              </div>
+            </div>
+            <div class="grid grid-cols-[2.5rem_1fr] gap-4 py-6">
+              <svg class="mt-0.5 size-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path stroke-linecap="round" d="M12 7v5l3 2"/></svg>
+              <div>
+                <dt class="flex flex-wrap items-center gap-3 text-[11px] uppercase tracking-[.24em] text-muted">
+                  Horário · todos os dias
+                  <span x-cloak class="inline-flex items-center gap-1.5 rounded-full px-2.5 py-0.5 normal-case tracking-normal"
+                        :class="status.open ? 'bg-emerald-400/10 text-emerald-300' : 'bg-wood/20 text-[#e0a283]'">
+                    <span class="size-1.5 rounded-full" :class="status.open ? 'bg-emerald-400' : 'bg-[#e0a283]'"></span>
+                    <span x-text="status.label + ' · ' + status.detail"></span>
+                  </span>
+                </dt>
+                <dd class="mt-3 grid max-w-xs grid-cols-2 gap-y-1 text-lg">
+                  <span class="text-muted">Almoço</span><span>12h às 15h</span>
+                  <span class="text-muted">Jantar</span><span>19h às 23h</span>
+                </dd>
+              </div>
+            </div>
+            <div class="grid grid-cols-[2.5rem_1fr] gap-4 py-6">
+              <svg class="mt-0.5 size-5 text-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.28 6.72 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.37c0-.52-.35-.97-.85-1.09l-4.42-1.1c-.44-.11-.9.05-1.17.41l-.97 1.29a1.13 1.13 0 0 1-1.21.38 12.04 12.04 0 0 1-7.14-7.14 1.13 1.13 0 0 1 .38-1.21l1.29-.97c.36-.27.52-.73.41-1.17l-1.1-4.42a1.13 1.13 0 0 0-1.09-.85H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"/></svg>
+              <div>
+                <dt class="text-[11px] uppercase tracking-[.24em] text-muted">Reservas e informações</dt>
+                <dd class="mt-2 text-lg"><a href="tel:+551333491008" class="transition duration-300 hover:text-gold">(13) 3349-1008</a></dd>
+              </div>
+            </div>
+          </dl>
+
+          <div class="mt-10 flex flex-wrap gap-4">
+            <a href="https://www.google.com/maps/dir/?api=1&destination=Av.+Dr.+Bernardino+de+Campos,+548,+Santos+-+SP" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-3 rounded-full bg-gold px-7 py-4 text-[12px] font-semibold uppercase tracking-[.2em] text-ink transition duration-300 hover:bg-gold-light">
+              Traçar rota
+              <svg class="size-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M7 17 17 7M8 7h9v9"/></svg>
+            </a>
+            <a href="https://www.instagram.com/nakazumysushi/" target="_blank" rel="noopener" aria-label="Instagram"
+               class="grid size-[52px] place-items-center rounded-full border border-white/15 transition duration-300 hover:border-gold hover:text-gold">
+              <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg>
+            </a>
+            <a href="https://www.facebook.com/Nakazumy-Sushi-649094469047388" target="_blank" rel="noopener" aria-label="Facebook"
+               class="grid size-[52px] place-items-center rounded-full border border-white/15 transition duration-300 hover:border-gold hover:text-gold">
+              <svg class="size-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13.5 21v-7.5h2.5l.4-3h-2.9V8.6c0-.87.25-1.46 1.5-1.46H16.6V4.46A21 21 0 0 0 14.3 4.3c-2.3 0-3.8 1.4-3.8 3.95v2.25H8v3h2.5V21h3Z"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="reveal lg:col-span-7" x-intersect.once="$el.classList.add('in')">
+          <div class="relative h-full min-h-[420px] overflow-hidden rounded-[2rem] border border-white/10">
+            <iframe title="Mapa: Nakazumy Sushi, Av. Dr. Bernardino de Campos, 548, Santos"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14583.6320662561!2d-46.33872020097379!3d-23.96369260548483!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce0316ac1f6237%3A0x52b3bb71cc13b40a!2sAv.%20Bernardino%20de%20Campos%2C%20548%20-%20Vila%20Belmiro%2C%20Santos%20-%20SP%2C%2011065-000!5e0!3m2!1spt-BR!2sbr!4v1598368826117!5m2!1spt-BR!2sbr"
+                    class="absolute inset-0 size-full"
+                    loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =====================================================================
+       FOOTER
+       ===================================================================== -->
+  <footer class="relative overflow-hidden border-t border-white/5 bg-ink-2 pb-28 pt-20 md:pb-10">
+    <div class="perf fade-mask pointer-events-none absolute inset-0 opacity-30"></div>
+    <div class="relative mx-auto max-w-7xl px-5 sm:px-8">
+      <div class="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
+        <div class="max-w-sm">
+          <img src="img/logo.webp" alt="Nakazumy Sushi" width="184" height="100" class="h-16 w-auto" loading="lazy">
+          <p class="mt-6 text-sm leading-relaxed text-muted">O melhor da culinária japonesa em Santos. Rodízio e à la carte, almoço e jantar, todos os dias.</p>
+        </div>
+        <div class="grid grid-cols-2 gap-12 text-sm sm:grid-cols-3">
+          <div>
+            <p class="text-[11px] uppercase tracking-[.24em] text-gold">Navegue</p>
+            <ul class="mt-4 space-y-2.5 text-muted">
+              <li><a href="#sobre" class="transition-colors duration-300 hover:text-cream">A casa</a></li>
+              <li><a href="#rodizio" class="transition-colors duration-300 hover:text-cream">Rodízio</a></li>
+              <li><a href="#cardapio" class="transition-colors duration-300 hover:text-cream">Cardápio</a></li>
+              <li><a href="#ambiente" class="transition-colors duration-300 hover:text-cream">Ambiente</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-[11px] uppercase tracking-[.24em] text-gold">Visite</p>
+            <ul class="mt-4 space-y-2.5 text-muted">
+              <li>Av. Dr. Bernardino de Campos, 548</li>
+              <li>Gonzaga · Santos — SP</li>
+              <li><a href="tel:+551333491008" class="transition-colors duration-300 hover:text-cream">(13) 3349-1008</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="text-[11px] uppercase tracking-[.24em] text-gold">Siga</p>
+            <ul class="mt-4 space-y-2.5 text-muted">
+              <li><a href="https://www.instagram.com/nakazumysushi/" target="_blank" rel="noopener" class="transition-colors duration-300 hover:text-cream">Instagram</a></li>
+              <li><a href="https://www.facebook.com/Nakazumy-Sushi-649094469047388" target="_blank" rel="noopener" class="transition-colors duration-300 hover:text-cream">Facebook</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p aria-hidden="true" class="mt-20 select-none text-center font-display text-[18vw] font-light leading-none tracking-tight text-transparent [-webkit-text-stroke:1px_rgb(200_169_106/.25)] lg:text-[13rem]">Nakazumy</p>
+
+      <div class="mt-10 flex flex-col gap-3 border-t border-white/5 pt-8 text-xs text-muted sm:flex-row sm:justify-between">
+        <p>© <span x-text="year">2026</span> Nakazumy Sushi. Todos os direitos reservados.</p>
+        <p>Feito com cuidado em Santos — SP</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Barra de ações fixa (mobile) -->
+  <div x-cloak x-show="scrolled && !mobileOpen"
+       x-transition:enter="transition duration-300" x-transition:enter-start="translate-y-full" x-transition:enter-end="translate-y-0"
+       x-transition:leave="transition duration-300" x-transition:leave-start="translate-y-0" x-transition:leave-end="translate-y-full"
+       class="fixed inset-x-0 bottom-0 z-40 grid grid-cols-2 gap-2 border-t border-white/10 bg-ink/90 p-3 pb-[max(.75rem,env(safe-area-inset-bottom))] backdrop-blur-xl md:hidden">
+    <a href="tel:+551333491008" class="flex items-center justify-center gap-2 rounded-full bg-gold py-3.5 text-[12px] font-semibold uppercase tracking-[.16em] text-ink">Ligar</a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=Av.+Dr.+Bernardino+de+Campos,+548,+Santos+-+SP" target="_blank" rel="noopener"
+       class="flex items-center justify-center gap-2 rounded-full border border-white/15 py-3.5 text-[12px] font-semibold uppercase tracking-[.16em]">Como chegar</a>
+  </div>
+
+  <!-- Lightbox da galeria -->
+  <div x-cloak x-show="lightbox.open" role="dialog" aria-modal="true" aria-label="Galeria de fotos"
+       x-transition:enter="transition duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100"
+       x-transition:leave="transition duration-300" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+       class="fixed inset-0 z-[60] flex flex-col bg-black/95 backdrop-blur-sm" @click.self="closeLightbox()">
+    <div class="flex items-center justify-between p-5 text-sm text-muted">
+      <span><span class="text-cream" x-text="lightbox.index + 1"></span> / <span x-text="gallery.length"></span></span>
+      <button type="button" x-ref="lightboxClose" @click="closeLightbox()" class="grid size-11 place-items-center rounded-full border border-white/15 text-cream transition duration-300 hover:border-gold hover:text-gold" aria-label="Fechar">
+        <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <div class="relative flex flex-1 items-center justify-center px-4 sm:px-20" @click.self="closeLightbox()">
+      <template x-for="(photo, i) in gallery" :key="photo.src">
+        <img x-show="lightbox.index === i" :src="photo.src" :alt="photo.alt"
+             x-transition:enter="transition duration-500" x-transition:enter-start="opacity-0 scale-95" x-transition:enter-end="opacity-100 scale-100"
+             class="max-h-[78vh] max-w-full rounded-xl object-contain shadow-2xl">
+      </template>
+      <button type="button" @click="step(-1)" class="absolute left-3 top-1/2 grid size-12 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-black/40 text-cream transition duration-300 hover:border-gold hover:text-gold sm:left-6" aria-label="Foto anterior">
+        <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m15 6-6 6 6 6"/></svg>
+      </button>
+      <button type="button" @click="step(1)" class="absolute right-3 top-1/2 grid size-12 -translate-y-1/2 place-items-center rounded-full border border-white/15 bg-black/40 text-cream transition duration-300 hover:border-gold hover:text-gold sm:right-6" aria-label="Próxima foto">
+        <svg class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="m9 6 6 6-6 6"/></svg>
+      </button>
+    </div>
+    <p class="px-6 pb-8 pt-4 text-center text-sm text-muted" x-text="gallery[lightbox.index].alt"></p>
+  </div>
+
+</body>
+</html>
